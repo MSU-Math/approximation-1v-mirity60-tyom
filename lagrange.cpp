@@ -21,7 +21,7 @@ int lagrange_init(int n, double *x, double *f, double *coef)
             }
         }
 
-        if (denominator == 0.0) {
+        if (std::fabs(denominator) < 1e-14) {
             return -1;
         }
 
