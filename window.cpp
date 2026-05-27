@@ -18,7 +18,10 @@ static const double DEFAULT_A = -1.0;
 static const double DEFAULT_B = 1.0;
 static const int DEFAULT_N = 10;
 static const int DEFAULT_FUNC_ID = 0;
-
+static bool same_double(double x, double y)
+{
+    return std::fabs(x - y) < 1e-14;
+}
 static int read_double(const char *text, double *value)
 {
     char *end = nullptr;
@@ -101,7 +104,7 @@ int Window::parse_command_line(int argc, char *argv[])
         return -1;
     }
 
-    if (new_a == new_b || new_n < 2 || new_func_id < 0 || new_func_id > 6) {
+    if (same_double(new_a, new_b) || new_n < 2 || new_func_id < 0 || new_func_id > 6) {
         std::printf("Incorrect values: need a != b, n >= 2, 0 <= k <= 6\n");
         return -1;
     }
@@ -143,7 +146,7 @@ int Window::prepare()
     lagrange_ready = false;
     spline_ready = false;
 
-    if (n < 2 || a == b) {
+    if (n < 2 || same_double(a, b)) {
         return -1;
     }
 
