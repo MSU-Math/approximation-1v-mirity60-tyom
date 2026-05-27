@@ -30,7 +30,8 @@ static int find_interval(double x, int n, double *nodes)
 
 int cubic_spline_init(int n, double *x, double *f, double *coef, double *work)
 {
-    if (n < 2 || x == nullptr || f == nullptr || coef == nullptr || work == nullptr) {
+    if (n < 2 || x == nullptr || f == nullptr || coef == nullptr ||
+        work == nullptr) {
         return -1;
     }
 
@@ -130,7 +131,8 @@ int cubic_spline_init(int n, double *x, double *f, double *coef, double *work)
     return 0;
 }
 
-double cubic_spline_compute(double x, double a, double b, int n, double *x_array, double *coef)
+double cubic_spline_compute(double x, double a, double b, int n,
+                            double *x_array, double *coef)
 {
     (void)a;
     (void)b;

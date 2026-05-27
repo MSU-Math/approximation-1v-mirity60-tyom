@@ -23,10 +23,12 @@ int main(int argc, char *argv[])
 
     QAction *action = nullptr;
 
-    action = menu->addAction("Change function", graph_area, SLOT(change_func()));
+    action =
+        menu->addAction("Change function", graph_area, SLOT(change_func()));
     action->setShortcut(QString("Ctrl+C"));
 
-    action = menu->addAction("Change graph mode", graph_area, SLOT(change_graph_mode()));
+    action = menu->addAction("Change graph mode", graph_area,
+                             SLOT(change_graph_mode()));
     action->setShortcut(QString("Ctrl+M"));
 
     action = menu->addAction("Zoom in", graph_area, SLOT(zoom_in()));
@@ -41,10 +43,12 @@ int main(int argc, char *argv[])
     action = menu->addAction("Decrease n", graph_area, SLOT(decrease_n()));
     action->setShortcut(QString("Ctrl+3"));
 
-    action = menu->addAction("Increase perturbation", graph_area, SLOT(increase_perturbation()));
+    action = menu->addAction("Increase perturbation", graph_area,
+                             SLOT(increase_perturbation()));
     action->setShortcut(QString("Ctrl+6"));
 
-    action = menu->addAction("Decrease perturbation", graph_area, SLOT(decrease_perturbation()));
+    action = menu->addAction("Decrease perturbation", graph_area,
+                             SLOT(decrease_perturbation()));
     action->setShortcut(QString("Ctrl+5"));
 
     menu->addSeparator();

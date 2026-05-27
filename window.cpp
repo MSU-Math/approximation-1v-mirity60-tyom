@@ -45,8 +45,7 @@ static int read_int(const char *text, int *value)
     return 0;
 }
 
-Window::Window(QWidget *parent)
-    : QWidget(parent)
+Window::Window(QWidget *parent) : QWidget(parent)
 {
     a = DEFAULT_A;
     b = DEFAULT_B;
@@ -95,8 +94,9 @@ int Window::parse_command_line(int argc, char *argv[])
         return -1;
     }
 
-    if (read_double(argv[1], &new_a) != 0 || read_double(argv[2], &new_b) != 0 ||
-        read_int(argv[3], &new_n) != 0 || read_int(argv[4], &new_func_id) != 0) {
+    if (read_double(argv[1], &new_a) != 0 ||
+        read_double(argv[2], &new_b) != 0 || read_int(argv[3], &new_n) != 0 ||
+        read_int(argv[4], &new_func_id) != 0) {
         std::printf("Incorrect command line arguments\n");
         return -1;
     }
@@ -171,7 +171,8 @@ int Window::prepare()
 
     values[n / 2] += perturbation * 0.1 * max_value;
 
-    if (lagrange_coef != nullptr && lagrange_init(n, nodes, values, lagrange_coef) == 0) {
+    if (lagrange_coef != nullptr &&
+        lagrange_init(n, nodes, values, lagrange_coef) == 0) {
         lagrange_ready = true;
     }
 
@@ -209,7 +210,8 @@ double Window::curve_value(int curve_id, double x) const
     return 0.0;
 }
 
-void Window::find_bounds(double left, double right, double *min_y, double *max_y) const
+void Window::find_bounds(double left, double right, double *min_y,
+                         double *max_y) const
 {
     bool first = true;
 
@@ -290,7 +292,8 @@ void Window::find_bounds(double left, double right, double *min_y, double *max_y
     }
 }
 
-void Window::draw_curve(QPainter &painter, double left, double right, int curve_id) const
+void Window::draw_curve(QPainter &painter, double left, double right,
+                        int curve_id) const
 {
     QPointF previous;
     bool has_previous = false;
@@ -400,18 +403,23 @@ void Window::paintEvent(QPaintEvent *event)
 
     painter.setPen(Qt::black);
 
-    painter.drawText(10, 20, QString("k=%1 %2").arg(func_id).arg(function_text(func_id)));
+    painter.drawText(
+        10, 20, QString("k=%1 %2").arg(func_id).arg(function_text(func_id)));
     painter.drawText(10, 40,
                      QString("n=%1  scale=%2  perturbation=%3")
                          .arg(n)
                          .arg(scale_power)
                          .arg(perturbation));
-    painter.drawText(10, 60,
-                     QString("mode=%1  max=%2").arg(graph_mode).arg(max_abs, 0, 'e', 3));
-    painter.drawText(10, 80, "black: f, red: Lagrange, blue: natural cubic spline");
+    painter.drawText(
+        10, 60,
+        QString("mode=%1  max=%2").arg(graph_mode).arg(max_abs, 0, 'e', 3));
+    painter.drawText(10, 80,
+                     "black: f, red: Lagrange, blue: natural cubic spline");
 
     if (!lagrange_ready) {
-        painter.drawText(10, 100, QString("Lagrange is disabled for n > %1").arg(MAX_LAGRANGE_N));
+        painter.drawText(
+            10, 100,
+            QString("Lagrange is disabled for n > %1").arg(MAX_LAGRANGE_N));
     }
 }
 

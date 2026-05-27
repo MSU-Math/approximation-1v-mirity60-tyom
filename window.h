@@ -1,11 +1,9 @@
 #ifndef WINDOW_H
 #define WINDOW_H
-
 #include <QWidget>
 class QPainter;
 class Window : public QWidget
 {
-    Q_OBJECT
 
   private:
     double a;
@@ -29,8 +27,11 @@ class Window : public QWidget
     void clear_data();
 
     double curve_value(int curve_id, double x) const;
-    void find_bounds(double left, double right, double *min_y, double *max_y) const;
-    void draw_curve(QPainter &painter, double left, double right, int curve_id) const;
+    void find_bounds(double left, double right, double *min_y,
+                     double *max_y) const;
+    void draw_curve(QPainter &painter, double left, double right,
+                    int curve_id) const;
+
   public:
     Window(QWidget *parent);
     ~Window();
@@ -48,7 +49,6 @@ class Window : public QWidget
     void decrease_n();
     void increase_perturbation();
     void decrease_perturbation();
-
 
   protected:
     void paintEvent(QPaintEvent *event);

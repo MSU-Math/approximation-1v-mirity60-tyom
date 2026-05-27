@@ -31,7 +31,8 @@ int lagrange_init(int n, double *x, double *f, double *coef)
     return 0;
 }
 
-double lagrange_compute(double x, double a, double b, int n, double *x_array, double *coef)
+double lagrange_compute(double x, double a, double b, int n, double *x_array,
+                        double *coef)
 {
     (void)a;
     (void)b;
