@@ -40,7 +40,7 @@ class Window : public QWidget
 
     int parse_command_line(int argc, char *argv[]);
 
-  public slots:
+  public:
     void change_func();
     void change_graph_mode();
     void zoom_in();
